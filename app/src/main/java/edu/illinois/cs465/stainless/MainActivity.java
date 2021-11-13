@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         stains = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 1; i++) {
             stains.add(new Stain("Apple", "fruit", R.drawable.apple));
             stains.add(new Stain("Banana", "fruit", R.drawable.banana));
             stains.add(new Stain("Curry", "food", R.drawable.curry));
@@ -73,32 +73,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Category
         Spinner spinner = spinnerObj.findViewById(R.id.category_spinner);
-        // For testing
-        final int totalStain = 100;
-        spinnerTitles = new String[totalStain + 1];
-        spinnerTitles[0] = "Category 0";
-        spinnerImages = new int[totalStain];
-        for (int i = 0; i < totalStain; i++) {
-            spinnerTitles[i + 1] = String.format("Stain %d", i);
-            spinnerImages[i] = R.drawable.stain_adhesive_tape;
-        }
 
-        CategorySpinnerAdapter customAdapter = new CategorySpinnerAdapter(MainActivity.this, spinnerTitles, spinnerImages, spinner);
+        CategorySpinnerAdapter customAdapter = new CategorySpinnerAdapter(MainActivity.this, "Food", stains, spinner);
         spinner.setAdapter(customAdapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView adapterView, View view, int i, long l) {
-                if (isUserInteracting) {
-                    // Toast.makeText(MainActivity.this, spinnerTitles[i], Toast.LENGTH_SHORT).show();
-
-                    //if (i != 0) spinner.setSelection(0);
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView adapterView) {
-
-            }
-        });
 
         // Get button
         Button aToZButton = (Button) findViewById(R.id.aToZ_but_id);

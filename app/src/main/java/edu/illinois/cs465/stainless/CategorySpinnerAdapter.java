@@ -2,6 +2,7 @@ package edu.illinois.cs465.stainless;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,11 +22,11 @@ import androidx.annotation.Nullable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.List;
 
 public class CategorySpinnerAdapter extends ArrayAdapter {
     String categoryName;
-    String[] stainNames;
-    int[] stainImages;
+    List<Stain> stains;
     int numStainRows;
     Spinner spinner;
     Context mContext;
@@ -33,9 +34,6 @@ public class CategorySpinnerAdapter extends ArrayAdapter {
     View.OnClickListener listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Toast.makeText(mContext, ((TextView)v.findViewById(R.id.tvName)).getText(), Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(mContext, MainActivity.class);
-            mContext.startActivity(intent);
 
             Method method = null;
             try {
@@ -49,20 +47,28 @@ public class CategorySpinnerAdapter extends ArrayAdapter {
             } catch (InvocationTargetException e) {
                 e.printStackTrace();
             }
+
+
+            Intent intent = new Intent(mContext, Stain_Activity.class);
+            int position = (int)v.getTag();
+            Log.d("Click", String.valueOf(position));
+            intent.putExtra("StainName:", stains.get(position).getName());
+            intent.putExtra("Thumbnail:", stains.get(position).getThumbnail());
+            mContext.startActivity(intent);
         }
     };
 
     private static class ViewHolder {
         ImageView mImage;
         TextView mName;
+        RelativeLayout root;
     }
 
-    public CategorySpinnerAdapter(@NonNull Context context, String[] names, int[] images, Spinner spinner) {
+    public CategorySpinnerAdapter(@NonNull Context context, String categoryName, List<Stain> stains, Spinner spinner) {
         super(context, R.layout.category_spinner_row);
-        this.categoryName = names[0];
-        this.stainNames = Arrays.copyOfRange(names, 1, names.length);
-        this.numStainRows = (int) Math.ceil((double)this.stainNames.length / 3);
-        this.stainImages = images;
+        this.categoryName = categoryName;
+        this.stains = stains;
+        this.numStainRows = (int) Math.ceil((double)this.stains.size() / 3);
         this.spinner = spinner;
         this.mContext = context;
     }
@@ -76,7 +82,6 @@ public class CategorySpinnerAdapter extends ArrayAdapter {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if (position == 0) {
-            Log.d("0", String.valueOf(position));
             LayoutInflater mInflater = (LayoutInflater) mContext.
                     getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = mInflater.inflate(R.layout.category, parent, false);
@@ -103,13 +108,19 @@ public class CategorySpinnerAdapter extends ArrayAdapter {
                 stain0.setOnClickListener(listener);
                 stain1.setOnClickListener(listener);
                 stain2.setOnClickListener(listener);
+                stain0.setTag(position * 3 + 0);
+                stain1.setTag(position * 3 + 1);
+                stain2.setTag(position * 3 + 2);
 
-                mViewHolder0.mImage = stain0.findViewById(R.id.ivImg);
-                mViewHolder0.mName = stain0.findViewById(R.id.tvName);
-                mViewHolder1.mImage = stain1.findViewById(R.id.ivImg);
-                mViewHolder1.mName = stain1.findViewById(R.id.tvName);
-                mViewHolder2.mImage = stain2.findViewById(R.id.ivImg);
-                mViewHolder2.mName = stain2.findViewById(R.id.tvName);
+                mViewHolder0.mImage = stain0.findViewById(R.id.stain_img_id);
+                mViewHolder0.mName = stain0.findViewById(R.id.stain_name_id);
+                mViewHolder0.root = stain0;
+                mViewHolder1.mImage = stain1.findViewById(R.id.stain_img_id);
+                mViewHolder1.mName = stain1.findViewById(R.id.stain_name_id);
+                mViewHolder1.root = stain1;
+                mViewHolder2.mImage = stain2.findViewById(R.id.stain_img_id);
+                mViewHolder2.mName = stain2.findViewById(R.id.stain_name_id);
+                mViewHolder2.root = stain2;
                 convertView.setTag(R.id.stain0, mViewHolder0);
                 convertView.setTag(R.id.stain1, mViewHolder1);
                 convertView.setTag(R.id.stain2, mViewHolder2);
@@ -122,13 +133,12 @@ public class CategorySpinnerAdapter extends ArrayAdapter {
             convertView.setTag("stains");
             ViewHolder[] allHolders = {mViewHolder0, mViewHolder1, mViewHolder2};
             for (int i = 0; i < 3; i++) {
-                if (position * 3 + i < this.stainNames.length) {
-                    allHolders[i].mImage.setImageResource(this.stainImages[position * 3 + i]);
-                    allHolders[i].mName.setText(this.stainNames[position * 3 + i]);
+                if (position * 3 + i < this.stains.size()) {
+                    allHolders[i].mImage.setImageResource(this.stains.get(position * 3 + i).getThumbnail());
+                    allHolders[i].mName.setText(this.stains.get(position * 3 + i).getName());
                 } else {
-                    ViewGroup stainParent = (ViewGroup) allHolders[i].mImage.getParent();
-                    stainParent.removeView(allHolders[i].mImage);
-                    stainParent.removeView(allHolders[i].mName);
+                    ViewGroup stainParent = (ViewGroup) allHolders[i].root.getParent();
+                    stainParent.removeView(allHolders[i].root);
                     convertView.setTag("stains-partial");
                 }
             }
