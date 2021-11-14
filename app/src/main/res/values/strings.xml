@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Stainless</string>
+    <string name="category">Categories</string>
+    <string name="a_to_z">A - Z</string>
 </resources>
