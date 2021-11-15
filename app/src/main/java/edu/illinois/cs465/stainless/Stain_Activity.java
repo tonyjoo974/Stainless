@@ -17,15 +17,15 @@ public class Stain_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stain);
 
-//        title = (TextView) findViewById(R.id.txtName);
-//        img = (ImageView) findViewById(R.id.stainThumbnail);
+        title = (TextView) findViewById(R.id.txtName);
+        img = (ImageView) findViewById(R.id.stainThumbnail);
 
         // Receive data
         Intent intent = getIntent();
         String stainName = intent.getExtras().getString("StainName");
         int image = intent.getExtras().getInt("Thumbnail");
 
-//        title.setText(stainName);
-//        img.setImageResource(image);
+        title.setText(stainName);
+        img.setImageResource(image);
     }
 }
