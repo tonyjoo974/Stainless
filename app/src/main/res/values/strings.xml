@@ -2,4 +2,7 @@
     <string name="app_name">Stainless</string>
     <string name="category">Categories</string>
     <string name="a_to_z">A - Z</string>
+    <string name="what_you_will_need"><u>What you will need</u></string>
+    <string name="steps_to_clean"><u>Steps to clean</u></string>
+    <string name="placeholder_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
 </resources>

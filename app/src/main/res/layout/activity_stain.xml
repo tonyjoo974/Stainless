@@ -4,38 +4,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Stain_Activity">
+    tools:context=".Stain_Activity"
+    android:orientation="vertical"
+    >
 
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:padding="10dp">
+        android:layout_height="127dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <ImageView
+            android:id="@+id/stainThumbnail"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="#2d2d2d"
             android:gravity="center"
-            android:orientation="vertical">
+            android:scaleType="fitCenter" />
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:background="#2d2d2d"
-                android:id="@+id/stainThumbnail"
-                android:scaleType="fitCenter"/>
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="StainName"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/txtName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Stain Name"
-                android:layout_marginTop="10dp"
-                android:textSize="14sp"
-                android:textStyle="bold"/>
+        <ToggleButton
+            android:id="@+id/myToggleButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:textOff=""
+            android:textOn="" />
 
+    </LinearLayout>
 
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="365dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/washable_fabric"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:padding="30dp"
+            android:text="Washable Fabric"
+            android:onClick="washable_fabric_sol" ></Button>
+
+        <Button
+            android:id="@+id/carpet"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:padding="30dp"
+            android:text="Carpet"
+            android:onClick="carpet_sol" ></Button>
+
+        <Button
+            android:id="@+id/furniture_fabric"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:padding="30dp"
+            android:text="Furniture Fabric"
+            android:onClick="furniture_sol" ></Button>
+
+    </LinearLayout>
+
 
 </LinearLayout>
