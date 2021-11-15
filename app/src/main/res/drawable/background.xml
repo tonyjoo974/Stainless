@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle"
-    android:layout_marginStart="30dp">
+    android:shape="rectangle">
     <stroke
         android:width="0.5dp"
         android:color="#797979" />
@@ -31,9 +30,7 @@
 <!--        android:top="integer"-->
 <!--        android:right="integer"-->
 <!--        android:bottom="integer" />-->
-<!--    <size-->
-<!--        android:width="integer"-->
-<!--        android:height="integer" />-->
+
 <!--    <solid-->
 <!--        android:color="color" />-->
 <!--    <stroke-->
