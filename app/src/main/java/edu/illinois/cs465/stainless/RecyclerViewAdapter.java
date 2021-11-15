@@ -42,8 +42,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                 // segue to clicked page
                 Intent intent = new Intent(mContext, Stain_Activity.class);
-                intent.putExtra("StainName:", mData.get(position).getName());
-                intent.putExtra("Thumbnail:", mData.get(position).getThumbnail());
+                intent.putExtra("StainName", mData.get(position).getName());
+                intent.putExtra("Thumbnail", mData.get(position).getThumbnail());
                 mContext.startActivity(intent);
             }
         });
