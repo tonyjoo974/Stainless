@@ -52,8 +52,8 @@ public class CategorySpinnerAdapter extends ArrayAdapter {
             Intent intent = new Intent(mContext, Stain_Activity.class);
             int position = (int)v.getTag();
             Log.d("Click", String.valueOf(position));
-            intent.putExtra("StainName:", stains.get(position).getName());
-            intent.putExtra("Thumbnail:", stains.get(position).getThumbnail());
+            intent.putExtra("StainName", stains.get(position).getName());
+            intent.putExtra("Thumbnail", stains.get(position).getThumbnail());
             mContext.startActivity(intent);
         }
     };

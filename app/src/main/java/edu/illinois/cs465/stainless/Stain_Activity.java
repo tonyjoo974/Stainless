@@ -24,6 +24,7 @@ public class Stain_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stain);
 
+
         // calling the action bar
         ActionBar actionBar = getSupportActionBar();
 
@@ -54,6 +55,7 @@ public class Stain_Activity extends AppCompatActivity {
 
         title.setText(stainName);
         img.setImageResource(image);
+
 
     }
 
