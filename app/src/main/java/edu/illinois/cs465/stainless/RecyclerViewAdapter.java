@@ -1,5 +1,6 @@
 package edu.illinois.cs465.stainless;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -12,16 +13,21 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
     private Context mContext;
-    private List<Stain> mData;
+    private List<Stain> stains;
+    private ArrayList<Stain> stainList;
 
-    public RecyclerViewAdapter(Context mContext, List<Stain> mData) {
+    public RecyclerViewAdapter(Context mContext, List<Stain> stains) {
         this.mContext = mContext;
-        this.mData = mData;
+        this.stains = stains;
+        this.stainList = new ArrayList<>();
+        this.stainList.addAll(stains);
     }
 
     @Override
@@ -33,17 +39,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.stain_name.setText(mData.get(position).getName());
-        holder.img_stain_thumbnail.setImageResource(mData.get(position).getThumbnail());
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        holder.stain_name.setText(stains.get(position).getName());
+        holder.img_stain_thumbnail.setImageResource(stains.get(position).getThumbnail());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 // segue to clicked page
                 Intent intent = new Intent(mContext, Stain_Activity.class);
-                intent.putExtra("StainName", mData.get(position).getName());
-                intent.putExtra("Thumbnail", mData.get(position).getThumbnail());
+                intent.putExtra("StainName", stains.get(position).getName());
+                intent.putExtra("Thumbnail", stains.get(position).getThumbnail());
                 mContext.startActivity(intent);
             }
         });
@@ -51,7 +57,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return stains.size();
+    }
+
+    public void filter(String newText) {
+        stains.clear();
+        if (newText == null){
+            stains.addAll(stainList);
+        } else {
+            for (Stain stain : stainList) {
+                if (stain.getName().toLowerCase().contains(newText.toLowerCase())){
+                    stains.add(stain);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
