@@ -59,7 +59,8 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:padding="30dp"
-            android:text="Washable Fabric"></Button>
+            android:text="Washable Fabric"
+            android:onClick="washable_fabric_sol" ></Button>
 
         <Button
             android:id="@+id/carpet"
@@ -68,7 +69,8 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:padding="30dp"
-            android:text="Carpet"></Button>
+            android:text="Carpet"
+            android:onClick="carpet_sol" ></Button>
 
         <Button
             android:id="@+id/furniture_fabric"
@@ -77,7 +79,8 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:padding="30dp"
-            android:text="Furniture Fabric"></Button>
+            android:text="Furniture Fabric"
+            android:onClick="furniture_sol" ></Button>
 
     </LinearLayout>
 

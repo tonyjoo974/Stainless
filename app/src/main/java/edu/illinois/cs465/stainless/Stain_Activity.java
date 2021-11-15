@@ -8,6 +8,8 @@ import androidx.core.content.ContextCompat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -50,8 +52,8 @@ public class Stain_Activity extends AppCompatActivity {
 
         // Receive data
         Intent intent = getIntent();
-        String stainName = intent.getExtras().getString("name");
-        int image = intent.getExtras().getInt("thumbnail");
+        String stainName = intent.getExtras().getString("StainName");
+        int image = intent.getExtras().getInt("Thumbnail");
 
         title.setText(stainName);
         img.setImageResource(image);
@@ -69,5 +71,18 @@ public class Stain_Activity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void washable_fabric_sol(View v){
+        startActivity(new Intent(Stain_Activity.this, Solution_Activity.class));
+    }
+
+    public void carpet_sol(View v){
+        startActivity(new Intent(Stain_Activity.this, Solution_Activity.class));
+    }
+
+    public void furniture_sol(View v){
+        startActivity(new Intent(Stain_Activity.this, Solution_Activity.class));
     }
 }

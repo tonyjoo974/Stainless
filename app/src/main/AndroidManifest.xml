@@ -11,6 +11,11 @@
         android:theme="@style/Theme.Stainless">
         <activity
             android:name=".Stain_Activity"
+            android:exported="false"
+            android:label="Stain Solution"/>
+        <activity
+            android:name=".Solution_Activity"
+            android:label="Washable Fabrics"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
