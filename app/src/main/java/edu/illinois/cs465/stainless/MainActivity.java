@@ -1,20 +1,25 @@
 package edu.illinois.cs465.stainless;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     String[] spinnerTitles;
     int[] spinnerImages;
     boolean isUserInteracting = false;
@@ -23,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
     View recyclerViewObj = null;
     View spinnerObj = null;
     LinearLayout contentSpace = null;
+    List<Stain> stains;
+    RecyclerViewAdapter myAdapter;
+    SearchView editSearch;
+    String prevUserInput;
 
     private void resetView() {
         contentSpace.removeAllViews();
@@ -40,14 +49,12 @@ public class MainActivity extends AppCompatActivity {
         isUserInteracting = true;
     }
 
-    List<Stain> stains;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        stains = new ArrayList<>();
+        this.stains = new ArrayList<>();
         for (int i = 0; i < 1; i++) {
             stains.add(new Stain("Apple", "fruit", R.drawable.apple));
             stains.add(new Stain("Banana", "fruit", R.drawable.banana));
@@ -66,10 +73,13 @@ public class MainActivity extends AppCompatActivity {
         this.recyclerViewObj = getLayoutInflater().inflate(R.layout.recycler_view, null);
         this.spinnerObj = getLayoutInflater().inflate(R.layout.spinner, null);
 
+        // Locate the RecyclerView in recycler_view.xml
         RecyclerView recyclerView = recyclerViewObj.findViewById(R.id.recyclerView);
-        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this, stains);
+        // Pass the stains to RecyclerViewAdapter Class
+        this.myAdapter = new RecyclerViewAdapter(this, stains);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
-        recyclerView.setAdapter(myAdapter);
+        // Bind the Adapter to RecyclerView
+        recyclerView.setAdapter(this.myAdapter);
 
         // Category
         Spinner spinner = spinnerObj.findViewById(R.id.category_spinner);
@@ -80,12 +90,12 @@ public class MainActivity extends AppCompatActivity {
         // Get button
         Button aToZButton = (Button) findViewById(R.id.aToZ_but_id);
         Button categoryButton = (Button) findViewById(R.id.category_but_id);
-        aToZButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (categoryView) {
-                    categoryView = false;
-                    resetView();
-                }
+        aToZButton.setOnClickListener(v -> {
+            if (categoryView) {
+                categoryView = false;
+                resetView();
+                // retrieve previous search text
+                onQueryTextChange(this.prevUserInput);
             }
         });
 
@@ -94,14 +104,27 @@ public class MainActivity extends AppCompatActivity {
                 if (!categoryView) {
                     categoryView = true;
                     resetView();
+                    // set search text to null to show all stains
+                    myAdapter.filter("");
                 }
             }
         });
-
         resetView();
+
+        // Search bar initialization
+        editSearch = findViewById(R.id.search);
+        editSearch.setOnQueryTextListener(this);
     }
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
 
-
-
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        this.prevUserInput = newText;
+        this.myAdapter.filter(newText);
+        return false;
+    }
 }

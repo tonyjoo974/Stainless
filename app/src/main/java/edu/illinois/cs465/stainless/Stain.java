@@ -32,7 +32,5 @@ public class Stain {
         Category = category;
     }
 
-    public void setThumbnail(int thumbnail) {
-        Thumbnail = thumbnail;
-    }
+    public void setThumbnail(int thumbnail) { Thumbnail = thumbnail;}
 }

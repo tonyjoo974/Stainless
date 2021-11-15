@@ -1,33 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="45dp"
-    android:layout_marginTop="20dp"
+    android:layout_height="35dp"
     android:orientation="horizontal"
     android:paddingHorizontal="20dp"
+    android:paddingVertical="10dp"
     android:layout_weight="0">
 
-    <ImageButton
-        android:id="@+id/search_btn"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:layout_marginRight="10dp"
-        android:gravity="center"
-        android:background="@android:color/background_light"
-        app:srcCompat="@mipmap/search_button" />
+    <androidx.appcompat.widget.SearchView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:iconifiedByDefault="false"
+        app:queryBackground="@drawable/background"
+        app:queryHint="Search here"/>
+<!--        <ImageButton-->
+<!--            android:id="@+id/search_btn"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:gravity="center"-->
+<!--            android:background="@android:color/background_light"-->
+<!--            app:srcCompat="@mipmap/search_button"-->
+<!--            app:showAsAction="always"-->
+<!--            app:actionViewClass="androidx:appcompat.widget.SearchView"/>-->
 
-    <EditText
-        android:id="@+id/search_field"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="7"
-        android:gravity="center"
-        android:background="@drawable/search_layout"
-        android:ems="10"
-        android:hint="Search here"
-        android:inputType="text"
-        android:textColor="#999999"
-        android:textSize="16sp" />
+<!--        <EditText-->
+<!--            android:id="@+id/search_field"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="7"-->
+<!--            android:gravity="center"-->
+<!--            android:background="@drawable/search_layout"-->
+<!--            android:ems="10"-->
+<!--            android:hint="Search here"-->
+<!--            android:inputType="text"-->
+<!--            android:textColor="#999999"-->
+<!--            android:textSize="16sp" />-->
 </LinearLayout>
