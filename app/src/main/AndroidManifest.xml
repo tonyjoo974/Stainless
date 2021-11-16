@@ -19,11 +19,6 @@
             android:label="Washable Fabrics"
             android:exported="false" />
         <activity
-            android:name=".SlideRecyclerViewActivity"
-            android:label="Inventory"
-            tools:ignore="Instantiatable"
-            android:exported="false"/>
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
