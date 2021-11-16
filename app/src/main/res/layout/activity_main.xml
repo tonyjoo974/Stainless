@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:id="@+id/mainLayout">
 
 
     <LinearLayout
@@ -76,14 +77,14 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/contentView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/contentView"
             android:orientation="vertical">
 
         </LinearLayout>
 
-<!--        <include layout="@layout/search_bar"-->
+        <!--        <include layout="@layout/search_bar"-->
 <!--            android:id="@+id/search_layout"/>-->
 
 <!--        <include layout="@layout/recycler_view"-->
