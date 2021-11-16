@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
         // Pre-processing for fuzzy search
         this.stainList = new ArrayList<>();
         for (Stain stain : stains) {
-            this.stainList.add(stain.getName().toLowerCase() + " " + stain.getCategory().toLowerCase() + stain.getName().length());
+            this.stainList.add(stain.getName().toLowerCase() + " " + stain.getCategory().toLowerCase());
         }
 
         this.contentSpace = view.findViewById(R.id.contentView);
