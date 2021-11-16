@@ -3,8 +3,8 @@ plugins {
 }
 
 android {
-    compileSdk 31
-
+    compileSdkVersion 31
+    buildToolsVersion "31.0.0"
     defaultConfig {
         applicationId "edu.illinois.cs465.stainless"
         minSdk 21

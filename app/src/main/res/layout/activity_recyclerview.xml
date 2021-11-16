@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -16,7 +15,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/cardview_dark_background"
-            android:text="HAVE"
+            android:text="In Stock"
             android:textColor="#fff"></Button>
 
         <Button
@@ -25,7 +24,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/colorPrimary"
-            android:text="Not HAVE"
+            android:text="Out Of Stock"
             android:textColor="#fff"></Button>
     </LinearLayout>
 
