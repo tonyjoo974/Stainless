@@ -1,6 +1,7 @@
 package edu.illinois.cs465.stainless;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -27,6 +29,7 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
     View spinnerObj = null;
     LinearLayout contentSpace = null;
     List<Stain> stains;
+    List<String> stainList;
     RecyclerViewAdapter myAdapter;
     SearchView editSearch;
     String prevUserInput;
@@ -42,6 +45,7 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -57,9 +61,15 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
             stains.add(new Stain("Eye Shadow", "other", R.drawable.eye_shadow));
             stains.add(new Stain("Fabric Dye", "other", R.drawable.fabric_dye));
             stains.add(new Stain("Iodine", "other", R.drawable.iodine));
-            stains.add(new Stain("Mustard", "other", R.drawable.mustard));
-            stains.add(new Stain("Pudding", "other", R.drawable.pudding));
-            stains.add(new Stain("Soft Drinks", "other", R.drawable.soft_drinks));
+            stains.add(new Stain("Mustard", "food", R.drawable.mustard));
+            stains.add(new Stain("Pudding", "food", R.drawable.pudding));
+            stains.add(new Stain("Soft Drinks", "beverage", R.drawable.soft_drinks));
+        }
+
+        // Pre-processing for fuzzy search
+        this.stainList = new ArrayList<>();
+        for (Stain stain : stains) {
+            this.stainList.add(stain.getName().toLowerCase() + " " + stain.getCategory().toLowerCase() + stain.getName().length());
         }
 
         this.contentSpace = view.findViewById(R.id.contentView);
@@ -70,7 +80,7 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
         // Locate the RecyclerView in recycler_view.xml
         RecyclerView recyclerView = recyclerViewObj.findViewById(R.id.recyclerView);
         // Pass the stains to RecyclerViewAdapter Class
-        this.myAdapter = new RecyclerViewAdapter(mContext, stains);
+        this.myAdapter = new RecyclerViewAdapter(mContext, stains, stainList);
         recyclerView.setLayoutManager(new GridLayoutManager(mContext, 3));
         // Bind the Adapter to RecyclerView
         recyclerView.setAdapter(this.myAdapter);
@@ -115,6 +125,7 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
         return false;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public boolean onQueryTextChange(String newText) {
         this.prevUserInput = newText;

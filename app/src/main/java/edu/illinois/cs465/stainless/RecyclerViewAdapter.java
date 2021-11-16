@@ -3,6 +3,7 @@ package edu.illinois.cs465.stainless;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,24 +11,32 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+
+import me.xdrop.fuzzywuzzy.FuzzySearch;
+import me.xdrop.fuzzywuzzy.model.ExtractedResult;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
     private Context mContext;
     private List<Stain> stains;
-    private ArrayList<Stain> stainList;
+    private ArrayList<Stain> temp;
+    private List<String> stainList;
+    private static int CUTOFF = 60;
 
-    public RecyclerViewAdapter(Context mContext, List<Stain> stains) {
+    public RecyclerViewAdapter(Context mContext, List<Stain> stains, List<String> concatString) {
         this.mContext = mContext;
         this.stains = stains;
-        this.stainList = new ArrayList<>();
-        this.stainList.addAll(stains);
+        this.temp = new ArrayList<>();
+        this.temp.addAll(stains);
+        this.stainList = concatString;
     }
 
     @Override
@@ -60,13 +69,30 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return stains.size();
     }
 
+    // Filter search results with FuzzyWuzzy
+    // Reference: https://github.com/xdrop/fuzzywuzzy
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void filter(String newText) {
+        List<ExtractedResult> result;
+        List<String> arrOfStr = new ArrayList<>();
+        List<String> stainName;
+        List<String> extractedNames;
+
         stains.clear();
-        if (newText == null){
-            stains.addAll(stainList);
+        if (newText == null || newText.isEmpty()){
+            stains.addAll(temp);
         } else {
-            for (Stain stain : stainList) {
-                if (stain.getName().toLowerCase().contains(newText.toLowerCase())){
+            // You can adjust CUTOFF value. Currently set to 60.
+            result = FuzzySearch.extractAll(newText, stainList, CUTOFF);
+//            System.out.println(result);
+            for (ExtractedResult x : result) {
+                stainName = Arrays.asList(x.getString().split(" "));
+                extractedNames = stainName.subList(0, stainName.size() - 1);
+                arrOfStr.add(String.join(" ", extractedNames));
+            }
+//            System.out.println(arrOfStr);
+            for (Stain stain : temp) {
+                if (arrOfStr.contains(stain.getName().toLowerCase())){
                     stains.add(stain);
                 }
             }
