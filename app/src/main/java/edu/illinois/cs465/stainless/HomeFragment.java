@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class HomeFragment extends Fragment implements SearchView.OnQueryTextListener{
     View view;
@@ -105,11 +106,11 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
         List<Stain> otherStains = new ArrayList<>(stains);
         otherStains.removeIf(stain -> !stain.getCategory().equals("other"));
 
-        CategorySpinnerAdapter customAdapterFood = new CategorySpinnerAdapter(mContext, "Food", foodStains, spinnerFoodView);
+        CategorySpinnerAdapter customAdapterFood = new CategorySpinnerAdapter(mContext, String.format(Locale.getDefault(), "%s (%d)", "Food", foodStains.size()), foodStains, spinnerFoodView);
         spinnerFoodView.setAdapter(customAdapterFood);
-        CategorySpinnerAdapter customAdapterFruit = new CategorySpinnerAdapter(mContext, "Fruit", fruitStains, spinnerFoodView);
+        CategorySpinnerAdapter customAdapterFruit = new CategorySpinnerAdapter(mContext, String.format(Locale.getDefault(), "%s (%d)", "Fruit", fruitStains.size()), fruitStains, spinnerFoodView);
         spinnerFruitView.setAdapter(customAdapterFruit);
-        CategorySpinnerAdapter customAdapterOther = new CategorySpinnerAdapter(mContext, "Other", otherStains, spinnerFoodView);
+        CategorySpinnerAdapter customAdapterOther = new CategorySpinnerAdapter(mContext, String.format(Locale.getDefault(), "%s (%d)", "Other", otherStains.size()), otherStains, spinnerFoodView);
         spinnerOtherView.setAdapter(customAdapterOther);
 
         // Get button
