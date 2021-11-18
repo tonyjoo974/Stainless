@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,23 +53,34 @@
             android:orientation="horizontal"
             android:paddingHorizontal="20dp"
             android:layout_weight="0">
-
-            <Button
-                android:id="@+id/aToZ_but_id"
-                android:layout_width="0dp"
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/homeToggleButtonGroup"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/a_to_z"/>
+                app:selectionRequired="true"
+                app:singleSelection="true"
+                app:checkedButton="@id/aToZ_but_id">
 
-            <Button
-                android:id="@+id/category_but_id"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginLeft="30dp"
-                android:gravity="center"
-                android:text="@string/category"/>
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/aToZ_but_id"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/a_to_z"/>
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/category_but_id"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="center"
+                    android:text="@string/category"/>
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
 
         </LinearLayout>
 

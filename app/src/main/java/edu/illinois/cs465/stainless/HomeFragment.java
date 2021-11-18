@@ -138,8 +138,8 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
 
         noteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-//                Intent intent = new Intent(mContext, NoteScreenActivity.class);
-//                mContext.startActivity(intent);
+                Intent intent = new Intent(mContext, NoteScreenActivity.class);
+                mContext.startActivity(intent);
             }
         });
 
