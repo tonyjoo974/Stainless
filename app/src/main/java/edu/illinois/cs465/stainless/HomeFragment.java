@@ -1,12 +1,14 @@
 package edu.illinois.cs465.stainless;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
@@ -94,6 +96,8 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
         // Get button
         Button aToZButton = (Button) view.findViewById(R.id.aToZ_but_id);
         Button categoryButton = (Button) view.findViewById(R.id.category_but_id);
+        ImageView noteButton = view.findViewById(R.id.login_button);
+
         aToZButton.setOnClickListener(v -> {
             if (categoryView) {
                 categoryView = false;
@@ -111,6 +115,14 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
                 myAdapter.filter("");
             }
         });
+
+        noteButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, NoteScreenActivity.class);
+                mContext.startActivity(intent);
+            }
+        });
+
         resetView();
 
         // Search bar initialization

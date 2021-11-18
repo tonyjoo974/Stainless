@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationBarView;
@@ -13,6 +15,17 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Check if app is just opening up
+        Bundle extras = getIntent().getExtras();
+        Log.d("123", String.valueOf(extras));
+        if (extras == null) {
+            Intent myIntent = new Intent(this, LoadingScreenActivity.class);
+            startActivity(myIntent);
+            finish();
+            return;
+        }
+
         setContentView(R.layout.activity_main);
 
         // Begin with Home Screen
