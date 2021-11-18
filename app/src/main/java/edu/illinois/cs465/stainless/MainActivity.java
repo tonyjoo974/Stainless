@@ -5,10 +5,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -49,6 +53,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Check if app is just opening up
+        Bundle extras = getIntent().getExtras();
+        Log.d("123", String.valueOf(extras));
+        if (extras == null) {
+            Intent myIntent = new Intent(this, LoadingScreenActivity.class);
+            startActivity(myIntent);
+            finish();
+            return;
+        }
+
         setContentView(R.layout.activity_main);
 
         stains = new ArrayList<>();
@@ -84,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
         // Get button
         Button aToZButton = (Button) findViewById(R.id.aToZ_but_id);
         Button categoryButton = (Button) findViewById(R.id.category_but_id);
+        ImageView noteButton = findViewById(R.id.login_button);
+
         aToZButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (categoryView) {
@@ -99,6 +115,14 @@ public class MainActivity extends AppCompatActivity {
                     categoryView = true;
                     resetView();
                 }
+            }
+        });
+
+        noteButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(MainActivity.this, NoteScreenActivity.class);
+                startActivity(myIntent);
+                finish();
             }
         });
 
