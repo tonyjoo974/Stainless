@@ -28,7 +28,9 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
     boolean categoryView = false;
     View searchBar = null;
     View recyclerViewObj = null;
-    View spinnerObj = null;
+    View spinnerFood = null;
+    View spinnerFruit = null;
+    View spinnerOther = null;
     LinearLayout contentSpace = null;
     List<Stain> stains;
     List<String> stainList;
@@ -40,7 +42,9 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
     private void resetView() {
         contentSpace.removeAllViews();
         if (categoryView) {
-            contentSpace.addView(spinnerObj);
+            contentSpace.addView(spinnerFood);
+            contentSpace.addView(spinnerFruit);
+            contentSpace.addView(spinnerOther);
         } else {
             contentSpace.addView(searchBar);
             contentSpace.addView(recyclerViewObj);
@@ -77,7 +81,9 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
         this.contentSpace = view.findViewById(R.id.contentView);
         this.searchBar = getLayoutInflater().inflate(R.layout.search_bar, null);
         this.recyclerViewObj = getLayoutInflater().inflate(R.layout.recycler_view, null);
-        this.spinnerObj = getLayoutInflater().inflate(R.layout.spinner, null);
+        this.spinnerFood = getLayoutInflater().inflate(R.layout.spinner, null);
+        this.spinnerFruit = getLayoutInflater().inflate(R.layout.spinner, null);
+        this.spinnerOther = getLayoutInflater().inflate(R.layout.spinner, null);
 
         // Locate the RecyclerView in recycler_view.xml
         RecyclerView recyclerView = recyclerViewObj.findViewById(R.id.recyclerView);
@@ -88,10 +94,23 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
         recyclerView.setAdapter(this.myAdapter);
 
         // Category
-        Spinner spinner = spinnerObj.findViewById(R.id.category_spinner);
+        Spinner spinnerFoodView = spinnerFood.findViewById(R.id.category_spinner);
+        Spinner spinnerFruitView = spinnerFruit.findViewById(R.id.category_spinner);
+        Spinner spinnerOtherView = spinnerOther.findViewById(R.id.category_spinner);
 
-        CategorySpinnerAdapter customAdapter = new CategorySpinnerAdapter(mContext, "Food", stains, spinner);
-        spinner.setAdapter(customAdapter);
+        List<Stain> foodStains = new ArrayList<>(stains);
+        foodStains.removeIf(stain -> !stain.getCategory().equals("food"));
+        List<Stain> fruitStains = new ArrayList<>(stains);
+        fruitStains.removeIf(stain -> !stain.getCategory().equals("fruit"));
+        List<Stain> otherStains = new ArrayList<>(stains);
+        otherStains.removeIf(stain -> !stain.getCategory().equals("other"));
+
+        CategorySpinnerAdapter customAdapterFood = new CategorySpinnerAdapter(mContext, "Food", foodStains, spinnerFoodView);
+        spinnerFoodView.setAdapter(customAdapterFood);
+        CategorySpinnerAdapter customAdapterFruit = new CategorySpinnerAdapter(mContext, "Fruit", fruitStains, spinnerFoodView);
+        spinnerFruitView.setAdapter(customAdapterFruit);
+        CategorySpinnerAdapter customAdapterOther = new CategorySpinnerAdapter(mContext, "Other", otherStains, spinnerFoodView);
+        spinnerOtherView.setAdapter(customAdapterOther);
 
         // Get button
         Button aToZButton = (Button) view.findViewById(R.id.aToZ_but_id);
@@ -118,8 +137,8 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
 
         noteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, NoteScreenActivity.class);
-                mContext.startActivity(intent);
+//                Intent intent = new Intent(mContext, NoteScreenActivity.class);
+//                mContext.startActivity(intent);
             }
         });
 

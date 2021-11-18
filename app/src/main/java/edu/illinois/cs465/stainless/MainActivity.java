@@ -19,9 +19,9 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         // Check if app is just opening up
         Bundle extras = getIntent().getExtras();
         Log.d("123", String.valueOf(extras));
-        if (extras == null) {
-            Intent myIntent = new Intent(this, LoadingScreenActivity.class);
-            startActivity(myIntent);
+        if (extras == null && false) {
+//            Intent myIntent = new Intent(this, LoadingScreenActivity.class);
+//            startActivity(myIntent);
             finish();
             return;
         }
