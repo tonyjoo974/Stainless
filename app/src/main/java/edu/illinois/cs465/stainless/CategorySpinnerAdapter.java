@@ -40,11 +40,7 @@ public class CategorySpinnerAdapter extends ArrayAdapter {
                 method = Spinner.class.getDeclaredMethod("onDetachedFromWindow");
                 method.setAccessible(true);
                 method.invoke(spinner);
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
+            } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
                 e.printStackTrace();
             }
 
@@ -87,6 +83,7 @@ public class CategorySpinnerAdapter extends ArrayAdapter {
             convertView = mInflater.inflate(R.layout.category, parent, false);
             TextView title = convertView.findViewById(R.id.categoryName);
             title.setText(this.categoryName);
+            title.setTextSize(20);
 
             convertView.setTag("title");
             return convertView;
