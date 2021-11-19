@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
+    Fragment curr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +49,16 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         } else {
             selectedFragment = new HomeFragment();
         }
+        curr = selectedFragment;
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
         return true;
+    }
+    public void onResume() {
+
+        super.onResume();
+        if(curr == null)
+            return;
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, curr).commit();
+
     }
 }
