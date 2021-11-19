@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         super.onResume();
         if(curr == null)
             return;
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, curr).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, curr).commitNow();
 
     }
 }
