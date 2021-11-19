@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class Stain_Activity extends AppCompatActivity {
@@ -54,11 +55,14 @@ public class Stain_Activity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.img_star_yellow));
-                    if(!RecyclerFavoritesViewAdapter.alreadyFavorited(stainName))
+                    if(!RecyclerFavoritesViewAdapter.alreadyFavorited(stainName)) {
                         RecyclerFavoritesViewAdapter.addFavoriteStain(new Stain(stainName, null, image));
+                        Toast.makeText(getApplication(), "Added to Favorites!", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
                     toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.img_star_grey));
                     RecyclerFavoritesViewAdapter.removeFavoriteStain(stainName);
+                    Toast.makeText(getApplication(), "Removed from Favorites!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
