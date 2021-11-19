@@ -1,6 +1,7 @@
 package edu.illinois.cs465.stainless;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -19,25 +21,40 @@ import java.util.List;
 
 import edu.illinois.cs465.stainless.adapter.InventoryAdapterHave;
 import edu.illinois.cs465.stainless.adapter.InventoryAdapterNotHave;
-import edu.illinois.cs465.stainless.bean.Inventory;
 
 public class InventoryFragment extends Fragment {
     View view;
     private SlideRecyclerView recycler_view_list1;
     private SlideRecyclerView recycler_view_list2;
-    private List<Inventory> mInventoriesHave;
-    private List<Inventory> mInventoriesNotHave;
+    private List<Material> mInventoriesHave;
+    private List<Material> mInventoriesNotHave;
     private InventoryAdapterHave mInventoryAdapterHave;
     private InventoryAdapterNotHave mInventoryAdapterNotHave;
     private Button btnHave;
     private Button btnNotHave;
     Context mContext;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_recyclerview, container, false);
         mContext = inflater.getContext();
+
+        ArrayList<Material> materials = new ArrayList<>();
+        // isInStock will only be initialized ONCE. See setIsInStock().
+        for (int i = 0; i < 1; i++) {
+            materials.add(new Material("Apple", R.drawable.apple, mContext));
+            materials.add(new Material("Banana", R.drawable.banana, mContext, true));
+            materials.add(new Material("Curry", R.drawable.curry, mContext));
+            materials.add(new Material("Dyes", R.drawable.dyes, mContext, true));
+            materials.add(new Material("Eye Shadow", R.drawable.eye_shadow, mContext));
+            materials.add(new Material("Fabric Dye", R.drawable.fabric_dye, mContext, true));
+            materials.add(new Material("Iodine", R.drawable.iodine, mContext));
+            materials.add(new Material("Mustard", R.drawable.mustard, mContext, true));
+            materials.add(new Material("Pudding", R.drawable.pudding, mContext));
+            materials.add(new Material("Soft Drinks", R.drawable.soft_drinks, mContext, true));
+        }
 
         btnHave = view.findViewById(R.id.btnHave);
         btnNotHave = view.findViewById(R.id.btnNotHave);
@@ -47,20 +64,23 @@ public class InventoryFragment extends Fragment {
         DividerItemDecoration itemDecoration = new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL);
         itemDecoration.setDrawable(ContextCompat.getDrawable(mContext, R.drawable.divider_inset));
         recycler_view_list1.addItemDecoration(itemDecoration);
-        mInventoriesHave = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            Inventory inventory = new Inventory();
-            inventory.setItemDesc("test have " + i);
-            mInventoriesHave.add(inventory);
-        }
+        mInventoriesHave = new ArrayList<>(materials);
+        mInventoriesHave.removeIf(material -> !material.isInStock());
+//        for (int i = 0; i < 5; i++) {
+//            Material inventory = new Inventory();
+//            inventory.setItemDesc("test have " + i);
+//            mInventoriesHave.add(inventory);
+//        }
+
         mInventoryAdapterHave = new InventoryAdapterHave(mContext, mInventoriesHave);
         recycler_view_list1.setAdapter(mInventoryAdapterHave);
         //have
         mInventoryAdapterHave.setOnDeleteClickListener(new InventoryAdapterHave.OnDeleteClickLister() {
             @Override
             public void onDeleteClick(View view, int position) {
-                Inventory inventory = mInventoriesHave.remove(position);
-                mInventoriesNotHave.add(inventory);
+                Material material = mInventoriesHave.remove(position);
+                mInventoriesNotHave.add(material);
+                material.setIsInStock(false, true);
                 mInventoryAdapterHave.notifyDataSetChanged();
                 mInventoryAdapterNotHave.notifyDataSetChanged();
                 recycler_view_list1.closeMenu();
@@ -72,12 +92,14 @@ public class InventoryFragment extends Fragment {
         recycler_view_list2.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
         itemDecoration.setDrawable(ContextCompat.getDrawable(mContext, R.drawable.divider_inset));
         recycler_view_list2.addItemDecoration(itemDecoration);
-        mInventoriesNotHave = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            Inventory inventory = new Inventory();
-            inventory.setItemDesc("test Not Have" + i);
-            mInventoriesNotHave.add(inventory);
-        }
+        mInventoriesNotHave = new ArrayList<>(materials);
+        mInventoriesNotHave.removeIf(material -> material.isInStock());
+//        for (int i = 0; i < 5; i++) {
+//            Inventory inventory = new Inventory();
+//            inventory.setItemDesc("test Not Have" + i);
+//            mInventoriesNotHave.add(inventory);
+//        }
+
         mInventoryAdapterNotHave = new InventoryAdapterNotHave(mContext, mInventoriesNotHave);
         recycler_view_list2.setAdapter(mInventoryAdapterNotHave);
 
@@ -85,8 +107,9 @@ public class InventoryFragment extends Fragment {
         mInventoryAdapterNotHave.setOnDeleteClickListener(new InventoryAdapterNotHave.OnDeleteClickLister() {
             @Override
             public void onDeleteClick(View view, int position) {
-                Inventory inventory = mInventoriesNotHave.remove(position);
-                mInventoriesHave.add(inventory);
+                Material material = mInventoriesNotHave.remove(position);
+                mInventoriesHave.add(material);
+                material.setIsInStock(true, true);
                 mInventoryAdapterNotHave.notifyDataSetChanged();
                 mInventoryAdapterHave.notifyDataSetChanged();
                 recycler_view_list2.closeMenu();
