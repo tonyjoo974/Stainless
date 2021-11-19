@@ -34,6 +34,7 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
     View spinnerOther = null;
     LinearLayout contentSpace = null;
     List<Stain> stains;
+    List<Material> materials;
     List<String> stainList;
     RecyclerViewAdapter myAdapter;
     SearchView editSearch;
