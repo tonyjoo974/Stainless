@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/noteScreenLayout">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/noteText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:text="Note"
+                android:textSize="35sp"
+                android:textColor="@color/purple_500"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="left"
+            android:layout_marginTop="50dp">
+
+            <ImageView
+                android:id="@+id/clock"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/clock"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="top"/>
+
+            <TextView
+                android:id="@+id/treatStainsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Treat stains as soon as possible. The older the stain, the more difficult it will be to remove."
+                android:textSize="30sp"
+                android:layout_marginRight="20dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="left"
+            android:layout_marginTop="50dp">
+
+            <ImageView
+                android:id="@+id/warningIcon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/warning_icon"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="top"/>
+
+            <TextView
+                android:id="@+id/removableMethodsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="All removable methods should be applied prior to laundering washable garments."
+                android:textSize="30sp"
+                android:layout_marginRight="20dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tap anywhere to continue --> "
+            android:textSize="20sp"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="70dp"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
