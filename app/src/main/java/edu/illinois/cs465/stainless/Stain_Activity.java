@@ -33,20 +33,6 @@ public class Stain_Activity extends AppCompatActivity {
         // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        // Add to Favorite
-        toggleButton = (ToggleButton) findViewById(R.id.myToggleButton);
-        toggleButton.setChecked(false);
-        toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.img_star_grey));
-        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked)
-                    toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.img_star_yellow));
-                else
-                    toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.img_star_grey));
-            }
-        });
-
         title = (TextView) findViewById(R.id.txtName);
         img = (ImageView) findViewById(R.id.stainThumbnail);
 
@@ -54,6 +40,30 @@ public class Stain_Activity extends AppCompatActivity {
         Intent intent = getIntent();
         String stainName = intent.getExtras().getString("StainName");
         int image = intent.getExtras().getInt("Thumbnail");
+
+        // Add to Favorite
+        toggleButton = (ToggleButton) findViewById(R.id.myToggleButton);
+        toggleButton.setChecked(RecyclerFavoritesViewAdapter.alreadyFavorited(stainName));
+        if (toggleButton.isChecked()) {
+            toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.img_star_yellow));
+        } else {
+            toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.img_star_grey));
+        }
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.img_star_yellow));
+                    if(!RecyclerFavoritesViewAdapter.alreadyFavorited(stainName))
+                        RecyclerFavoritesViewAdapter.addFavoriteStain(new Stain(stainName, null, image));
+                } else {
+                    toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.img_star_grey));
+                    RecyclerFavoritesViewAdapter.removeFavoriteStain(stainName);
+                }
+            }
+        });
+
+
 
         title.setText(stainName);
         img.setImageResource(image);
