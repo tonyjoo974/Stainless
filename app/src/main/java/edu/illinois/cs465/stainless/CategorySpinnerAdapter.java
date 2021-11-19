@@ -70,6 +70,11 @@ public class CategorySpinnerAdapter extends ArrayAdapter {
     }
 
     @Override
+    public boolean isEnabled(int position) {
+        return position == 0;
+    }
+
+    @Override
     public int getCount() {
         return numStainRows + 1;
     }
