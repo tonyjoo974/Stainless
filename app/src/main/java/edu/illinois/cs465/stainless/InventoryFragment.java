@@ -48,11 +48,26 @@ public class InventoryFragment extends Fragment {
         itemDecoration.setDrawable(ContextCompat.getDrawable(mContext, R.drawable.divider_inset));
         recycler_view_list1.addItemDecoration(itemDecoration);
         mInventoriesHave = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+//        for (int i = 0; i < 5; i++) {
+//            Inventory inventory = new Inventory();
+//            inventory.setItemDesc("test have " + i);
+//            mInventoriesHave.add(inventory);
+//        }
+        Inventory white_vinegar = new Inventory();
+        white_vinegar.setItemDesc("White Vinegar");
+
+        mInventoriesHave.add(white_vinegar);
+
+        Inventory rubbing_alcohol = new Inventory();
+        rubbing_alcohol.setItemDesc("Rubbing Alcohol");
+        mInventoriesHave.add(rubbing_alcohol);
+        for (int i = 0; i < 3; i++) {
             Inventory inventory = new Inventory();
             inventory.setItemDesc("test have " + i);
             mInventoriesHave.add(inventory);
         }
+
+
         mInventoryAdapterHave = new InventoryAdapterHave(mContext, mInventoriesHave);
         recycler_view_list1.setAdapter(mInventoryAdapterHave);
         //have
