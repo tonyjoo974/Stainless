@@ -81,7 +81,12 @@ public class Solution_Activity extends AppCompatActivity {
         dialog.show(getSupportFragmentManager(), "modal_activity");
         Bundle data = new Bundle();
         data.putString("materialName", materials.get(position).getName());
-        data.putInt("thumbnail", materials.get(position).getThumbnail());;
+        data.putInt("thumbnail", materials.get(position).getThumbnail());
+        if (materials.get(position).isInStock()) {
+            data.putString("stockStatus", "In Stock");
+        } else {
+            data.putString("stockStatus", "Out Of Stock");
+        }
         dialog.setArguments(data);
     }
 
