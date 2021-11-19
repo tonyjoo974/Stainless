@@ -1,13 +1,20 @@
 package edu.illinois.cs465.stainless.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+
+import edu.illinois.cs465.stainless.BottomSheetFragment;
+import edu.illinois.cs465.stainless.Material;
+import edu.illinois.cs465.stainless.Stain_Activity;
 
 /**
  * RecyclerView adapter基类
@@ -41,6 +48,24 @@ abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<RecyclerV
         holder.itemView.setTag(position);
         T bean = mData.get(position);
         onBindData(holder, bean, position);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Send data to BottomSheetFragment and Trigger Modal View
+                Material clickedMaterial = (Material) bean;
+                Bundle data = new Bundle();
+                data.putString("materialName", clickedMaterial.getName());
+                data.putInt("thumbnail", clickedMaterial.getThumbnail());
+                if (clickedMaterial.isInStock()) {
+                    data.putString("stockStatus", "In Stock");
+                } else {
+                    data.putString("stockStatus", "Out Of Stock");
+                }
+                BottomSheetFragment dialog = BottomSheetFragment.newInstance();
+                dialog.show(((FragmentActivity)mContext).getSupportFragmentManager(), "modal_activity");
+                dialog.setArguments(data);
+            }
+        });
     }
 
     @Override

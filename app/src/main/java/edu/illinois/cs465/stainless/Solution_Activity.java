@@ -19,6 +19,9 @@ import android.widget.ToggleButton;
 import java.util.ArrayList;
 
 public class Solution_Activity extends AppCompatActivity {
+    View modalViewObj = null;
+    ArrayList<Material> materials;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +35,7 @@ public class Solution_Activity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         // mock material
-        ArrayList<Material> materials = new ArrayList<>();
+        materials = new ArrayList<>();
         materials.add(new Material("White Vinegar", R.drawable.white_vinegar, this));
         materials.add(new Material("Rubbing alcohol", R.drawable.rubbing_alcohol, this, true));
         materials.add(new Material("Enzyme presoak", R.drawable.enzyme_presoak, this));
@@ -46,8 +49,41 @@ public class Solution_Activity extends AppCompatActivity {
             ((ImageView) materialLayouts.get(i).getChildAt(0)).setImageResource(materials.get(i).getThumbnail());
             ((TextView) materialLayouts.get(i).getChildAt(1)).setText(materials.get(i).getName());
         }
+
+        ImageView material1Button = findViewById(R.id.material1_img);
+        ImageView material2Button = findViewById(R.id.material2_img);
+        ImageView material3Button = findViewById(R.id.material3_img);
+
+        material1Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                passDataToBottomSheet(0);
+            }
+        });
+
+        material2Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                passDataToBottomSheet(1);
+            }
+        });
+
+        material3Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                passDataToBottomSheet(2);
+            }
+        });
     }
 
+    public void passDataToBottomSheet(int position){
+        BottomSheetFragment dialog = BottomSheetFragment.newInstance();
+        dialog.show(getSupportFragmentManager(), "modal_activity");
+        Bundle data = new Bundle();
+        data.putString("materialName", materials.get(position).getName());
+        data.putInt("thumbnail", materials.get(position).getThumbnail());;
+        dialog.setArguments(data);
+    }
 
     // this event will enable the back
     // function to the button on press

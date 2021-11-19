@@ -81,6 +81,7 @@
                     android:layout_marginBottom="20dp">
 
                     <ImageView
+                        android:id="@+id/material1_img"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:background="#2d2d2d"
@@ -106,6 +107,7 @@
                     android:layout_marginBottom="20dp">
 
                     <ImageView
+                        android:id="@+id/material2_img"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:background="#2d2d2d"
@@ -131,6 +133,7 @@
                     android:layout_marginBottom="20dp">
 
                     <ImageView
+                        android:id="@+id/material3_img"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:background="#2d2d2d"
