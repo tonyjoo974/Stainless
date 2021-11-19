@@ -44,16 +44,16 @@ public class InventoryFragment extends Fragment {
         ArrayList<Material> materials = new ArrayList<>();
         // isInStock will only be initialized ONCE. See setIsInStock().
         for (int i = 0; i < 1; i++) {
-            materials.add(new Material("Apple", R.drawable.apple, mContext));
-            materials.add(new Material("Banana", R.drawable.banana, mContext, true));
-            materials.add(new Material("Curry", R.drawable.curry, mContext));
-            materials.add(new Material("Dyes", R.drawable.dyes, mContext, true));
-            materials.add(new Material("Eye Shadow", R.drawable.eye_shadow, mContext));
-            materials.add(new Material("Fabric Dye", R.drawable.fabric_dye, mContext, true));
-            materials.add(new Material("Iodine", R.drawable.iodine, mContext));
-            materials.add(new Material("Mustard", R.drawable.mustard, mContext, true));
-            materials.add(new Material("Pudding", R.drawable.pudding, mContext));
-            materials.add(new Material("Soft Drinks", R.drawable.soft_drinks, mContext, true));
+            materials.add(new Material("White Vinegar", R.drawable.white_vinegar, mContext));
+            materials.add(new Material("Rubbing alcohol", R.drawable.rubbing_alcohol, mContext, true));
+            materials.add(new Material("Enzyme presoak", R.drawable.enzyme_presoak, mContext));
+            materials.add(new Material("Chlorine bleach or oxygen bleach", R.drawable.bleach, mContext, true));
+//            materials.add(new Material("Eye Shadow", R.drawable.eye_shadow, mContext));
+//            materials.add(new Material("Fabric Dye", R.drawable.fabric_dye, mContext, true));
+//            materials.add(new Material("Iodine", R.drawable.iodine, mContext));
+//            materials.add(new Material("Mustard", R.drawable.mustard, mContext, true));
+//            materials.add(new Material("Pudding", R.drawable.pudding, mContext));
+//            materials.add(new Material("Soft Drinks", R.drawable.soft_drinks, mContext, true));
         }
 
         btnHave = view.findViewById(R.id.btnHave);

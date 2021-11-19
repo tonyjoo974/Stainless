@@ -33,9 +33,9 @@ public class Solution_Activity extends AppCompatActivity {
 
         // mock material
         ArrayList<Material> materials = new ArrayList<>();
-        materials.add(new Material("Apple", R.drawable.apple, this));
-        materials.add(new Material("Banana", R.drawable.banana, this, true));
-        materials.add(new Material("Curry", R.drawable.curry, this));
+        materials.add(new Material("White Vinegar", R.drawable.white_vinegar, this));
+        materials.add(new Material("Rubbing alcohol", R.drawable.rubbing_alcohol, this, true));
+        materials.add(new Material("Enzyme presoak", R.drawable.enzyme_presoak, this));
 
         ArrayList<LinearLayout> materialLayouts = new ArrayList();
         materialLayouts.add(findViewById(R.id.material1));
