@@ -118,18 +118,11 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
                     public void onSlide(@NonNull View bottomSheet, float slideOffset) {
                         getView().findViewById(R.id.note).setVisibility(View.INVISIBLE);
                         if (slideOffset > 0) {
-                            // resize invisible placeholder
-                            LinearLayout placeholder = ((LinearLayout)getView().findViewById(R.id.placeholder));
-                            ViewGroup.LayoutParams params = placeholder.getLayoutParams();
-                            int maxDp = 70;
-                            params.height = (int) (dpToPx(maxDp) * (1 - slideOffset));
-                            placeholder.setLayoutParams(params);
-
                             // resize cardview
                             CardView realThumbnail = ((CardView)getView().findViewById(R.id.realThumbnail));
-                            maxDp = 200;
+                            int maxDp = 200;
                             int minDp = 125;
-                            params = realThumbnail.getLayoutParams();
+                            ViewGroup.LayoutParams params = realThumbnail.getLayoutParams();
                             int newPx = dpToPx((int) (minDp + (1 - slideOffset) * (maxDp - minDp)));
                             params.height = newPx;
                             params.width = newPx;
