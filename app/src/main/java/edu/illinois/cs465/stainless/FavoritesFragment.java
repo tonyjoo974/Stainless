@@ -37,7 +37,6 @@ public class FavoritesFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_favorites, container, false);
-        searchbar = getLayoutInflater().inflate(R.layout.search_bar, null);
         mContext = inflater.getContext();
 
         this.recyclerViewObj = getLayoutInflater().inflate(R.layout.recycler_view, null);
@@ -52,7 +51,6 @@ public class FavoritesFragment extends Fragment {
         this.contentSpace = view.findViewById(R.id.contentView);
         this.contentSpace.removeAllViews();
 
-        this.contentSpace.addView(this.searchbar);
         this.contentSpace.addView(this.recyclerViewObj);
         return view;
     }
@@ -62,9 +60,8 @@ public class FavoritesFragment extends Fragment {
         if(this.contentSpace != null) {
             return;
         }
-        this.contentSpace.removeAllViews();
+//        this.contentSpace.removeAllViews();
 
-        this.contentSpace.addView(this.searchbar);
-        this.contentSpace.addView(this.recyclerViewObj);
+//        this.contentSpace.addView(this.recyclerViewObj);
     }
 }
