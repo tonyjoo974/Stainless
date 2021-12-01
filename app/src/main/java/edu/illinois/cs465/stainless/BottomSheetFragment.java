@@ -1,6 +1,7 @@
 package edu.illinois.cs465.stainless;
 
 import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED;
+import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -43,6 +44,9 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
     private Button buttonText;
     private int thumbnail;
     private ImageView materialThumbnail;
+    private BottomSheetBehavior behaviour;
+    private BottomSheetBehavior.BottomSheetCallback bottomSheetCallback;
+    private Boolean canPeek = true;
 
     private static int dpToPx(int dp)
     {
@@ -99,10 +103,10 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
                 FrameLayout bottomSheet = (FrameLayout) d.findViewById(com.google.android.material.R.id.design_bottom_sheet);
                 assert bottomSheet != null;
                 bottomSheet.setBackgroundResource(android.R.color.transparent);
-                BottomSheetBehavior behaviour = BottomSheetBehavior.from(bottomSheet);
+                behaviour = BottomSheetBehavior.from(bottomSheet);
                 behaviour.setPeekHeight(dpToPx(225));
 
-                behaviour.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+                bottomSheetCallback = new BottomSheetBehavior.BottomSheetCallback() {
                     @Override
                     public void onStateChanged(@NonNull View bottomSheet, int newState) {
                         switch (newState) {
@@ -118,11 +122,18 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
                     public void onSlide(@NonNull View bottomSheet, float slideOffset) {
                         getView().findViewById(R.id.note).setVisibility(View.INVISIBLE);
                         if (slideOffset > 0) {
+                            // resize invisible placeholder
+                            LinearLayout placeholder = ((LinearLayout)getView().findViewById(R.id.placeholder));
+                            ViewGroup.LayoutParams params = placeholder.getLayoutParams();
+                            int maxDp = 70;
+                            params.height = (int) (dpToPx(maxDp) * (1 - slideOffset));
+                            placeholder.setLayoutParams(params);
+
                             // resize cardview
                             CardView realThumbnail = ((CardView)getView().findViewById(R.id.realThumbnail));
-                            int maxDp = 200;
+                            maxDp = 200;
                             int minDp = 125;
-                            ViewGroup.LayoutParams params = realThumbnail.getLayoutParams();
+                            params = realThumbnail.getLayoutParams();
                             int newPx = dpToPx((int) (minDp + (1 - slideOffset) * (maxDp - minDp)));
                             params.height = newPx;
                             params.width = newPx;
@@ -145,9 +156,34 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
                             modal.setBackground(shape);
                         }
                     }
-                });
+                };
+                behaviour.addBottomSheetCallback(bottomSheetCallback);
+
+                if (!canPeek) {
+                    behaviour.setState(BottomSheetBehavior.STATE_EXPANDED);
+                    behaviour.setSkipCollapsed(true);
+                    behaviour.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+                        // Remove animation callback after it's fully expanded
+                        @Override
+                        public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                            switch (newState) {
+                                case STATE_EXPANDED:
+                                    behaviour.removeBottomSheetCallback(bottomSheetCallback);
+                            }
+                        }
+
+                        @Override
+                        public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+
+                        }
+                    });
+                }
             }
         });
         return dialog;
+    }
+
+    public void disablePeek() {
+        canPeek = false;
     }
 }
