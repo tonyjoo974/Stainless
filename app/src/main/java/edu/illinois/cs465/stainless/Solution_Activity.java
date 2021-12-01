@@ -50,25 +50,25 @@ public class Solution_Activity extends AppCompatActivity {
             ((TextView) materialLayouts.get(i).getChildAt(1)).setText(materials.get(i).getName());
         }
 
-        ImageView material1Button = findViewById(R.id.material1_img);
-        ImageView material2Button = findViewById(R.id.material2_img);
-        ImageView material3Button = findViewById(R.id.material3_img);
+        LinearLayout material1 = findViewById(R.id.material1);
+        LinearLayout material2 = findViewById(R.id.material2);
+        LinearLayout material3 = findViewById(R.id.material3);
 
-        material1Button.setOnClickListener(new View.OnClickListener() {
+        material1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 passDataToBottomSheet(0);
             }
         });
 
-        material2Button.setOnClickListener(new View.OnClickListener() {
+        material2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 passDataToBottomSheet(1);
             }
         });
 
-        material3Button.setOnClickListener(new View.OnClickListener() {
+        material3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 passDataToBottomSheet(2);
