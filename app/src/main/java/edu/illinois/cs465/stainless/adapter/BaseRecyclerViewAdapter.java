@@ -64,6 +64,7 @@ abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<RecyclerV
                 BottomSheetFragment dialog = BottomSheetFragment.newInstance();
                 dialog.show(((FragmentActivity)mContext).getSupportFragmentManager(), "modal_activity");
                 dialog.setArguments(data);
+                dialog.disablePeek();
             }
         });
     }
