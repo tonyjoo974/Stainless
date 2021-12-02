@@ -93,10 +93,10 @@ public class Stain_Activity extends AppCompatActivity {
     }
 
     public void carpet_sol(View v){
-        startActivity(new Intent(Stain_Activity.this, Solution_Activity.class));
+        startActivity(new Intent(Stain_Activity.this, Solution_Activity_Carpet.class));
     }
 
     public void furniture_sol(View v){
-        startActivity(new Intent(Stain_Activity.this, Solution_Activity.class));
+        startActivity(new Intent(Stain_Activity.this, Solution_Activity_Furniture.class));
     }
 }

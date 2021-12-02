@@ -228,7 +228,8 @@
                             android:layout_width="300dp"
                             android:layout_height="130dp"
                             android:layout_marginLeft="30dp"
-                            android:background="@drawable/washable_step1"></ImageView>
+                            android:background="@drawable/carpet_step1">
+                        </ImageView>
 
                     </LinearLayout>
 
@@ -237,7 +238,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="20dp"
-                        android:text="Soak for 15 minutes in mixture of one quart lukewarm water, one-half teaspoon liquid hand dishwashing detergent and one tablespoon white vinegar. Rinse."
+                        android:text="Blot up as much of the spilled drink as possible."
                         android:textSize="20sp"></TextView>
 
                 </LinearLayout>
@@ -266,7 +267,7 @@
                             android:layout_width="300dp"
                             android:layout_height="130dp"
                             android:layout_marginLeft="30dp"
-                            android:background="@drawable/washable_step2">
+                            android:background="@drawable/carpet_step2">
                         </ImageView>
 
                     </LinearLayout>
@@ -276,16 +277,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="20dp"
-                        android:text="Sponge with rubbing alcohol, using light motions from center to edge of stain."
+                        android:text="Mix one (1) tablespoon of liquid hand dishwashing detergent and one (1) tablespoon of white vinegar with two (2) cups of warm water."
                         android:textSize="20sp"></TextView>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="382dp"
+                    android:layout_height="270dp"
                     android:layout_marginTop="30dp"
-                    android:layout_marginBottom="50dp"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -305,7 +305,7 @@
                             android:layout_width="300dp"
                             android:layout_height="130dp"
                             android:layout_marginLeft="30dp"
-                            android:background="@drawable/washable_step3"></ImageView>
+                            android:background="@drawable/carpet_step3"></ImageView>
 
                     </LinearLayout>
 
@@ -314,15 +314,82 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="20dp"
-                        android:text="Soak for 30 minutes in one quart warm water with one tablespoon enzyme presoak products."
+                        android:text="Using a clean white cloth, sponge the stain with plain water or the detergent/vinegar solution."
                         android:textSize="20sp"></TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="270dp"
+                    android:layout_marginTop="30dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="4"
+                            android:textSize="30sp"></TextView>
+
+                        <ImageView
+                            android:layout_width="300dp"
+                            android:layout_height="130dp"
+                            android:layout_marginLeft="30dp"
+                            android:background="@drawable/carpet_step4"></ImageView>
+
+                    </LinearLayout>
 
                     <TextView
                         android:layout_width="299dp"
-                        android:layout_height="96dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="20dp"
-                        android:text="NOTE: If color stain remains, launder in chlorine bleach if safe for the fabric, or in oxygen bleach."
+                        android:text="Apply a little bit at a time, blotting frequently with a dry cloth until the stain disappears."
+                        android:textSize="20sp"></TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="270dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="5"
+                            android:textSize="30sp"></TextView>
+
+                        <ImageView
+                            android:layout_width="300dp"
+                            android:layout_height="130dp"
+                            android:layout_marginLeft="30dp"
+                            android:background="@drawable/carpet_step5"></ImageView>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="299dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Sponge with cold water and blot dry."
                         android:textSize="20sp"></TextView>
 
                 </LinearLayout>

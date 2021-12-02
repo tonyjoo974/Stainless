@@ -228,7 +228,8 @@
                             android:layout_width="300dp"
                             android:layout_height="130dp"
                             android:layout_marginLeft="30dp"
-                            android:background="@drawable/washable_step1"></ImageView>
+                            android:background="@drawable/fruniture_step1">
+                        </ImageView>
 
                     </LinearLayout>
 
@@ -237,7 +238,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="20dp"
-                        android:text="Soak for 15 minutes in mixture of one quart lukewarm water, one-half teaspoon liquid hand dishwashing detergent and one tablespoon white vinegar. Rinse."
+                        android:text="Mix one (1) tablespoon of liquid dishwashing detergent with two (2) cups of cool water."
                         android:textSize="20sp"></TextView>
 
                 </LinearLayout>
@@ -266,7 +267,7 @@
                             android:layout_width="300dp"
                             android:layout_height="130dp"
                             android:layout_marginLeft="30dp"
-                            android:background="@drawable/washable_step2">
+                            android:background="@drawable/fruniture_step2">
                         </ImageView>
 
                     </LinearLayout>
@@ -276,16 +277,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="20dp"
-                        android:text="Sponge with rubbing alcohol, using light motions from center to edge of stain."
+                        android:text="Using a clean white cloth, sponge the stain with the detergent solution."
                         android:textSize="20sp"></TextView>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="382dp"
+                    android:layout_height="270dp"
                     android:layout_marginTop="30dp"
-                    android:layout_marginBottom="50dp"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -305,7 +305,7 @@
                             android:layout_width="300dp"
                             android:layout_height="130dp"
                             android:layout_marginLeft="30dp"
-                            android:background="@drawable/washable_step3"></ImageView>
+                            android:background="@drawable/fruniture_step3"></ImageView>
 
                     </LinearLayout>
 
@@ -314,15 +314,53 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="20dp"
-                        android:text="Soak for 30 minutes in one quart warm water with one tablespoon enzyme presoak products."
+                        android:text="Blot until the liquid is absorbed."
                         android:textSize="20sp"></TextView>
 
                     <TextView
                         android:layout_width="299dp"
-                        android:layout_height="96dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="80dp"
                         android:layout_marginTop="20dp"
-                        android:text="NOTE: If color stain remains, launder in chlorine bleach if safe for the fabric, or in oxygen bleach."
+                        android:text="Repeat Steps 2 and 3 until the stain disappears."
+                        android:textSize="20sp"></TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="270dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="4"
+                            android:textSize="30sp"></TextView>
+
+                        <ImageView
+                            android:layout_width="300dp"
+                            android:layout_height="130dp"
+                            android:layout_marginLeft="30dp"
+                            android:background="@drawable/fruniture_step4"></ImageView>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="299dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="80dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Sponge with cold water and blot dry to remove the detergent solution."
                         android:textSize="20sp"></TextView>
 
                 </LinearLayout>
