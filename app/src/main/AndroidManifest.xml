@@ -25,6 +25,14 @@
             android:label="Washable Fabrics"
             android:exported="false" />
         <activity
+            android:name=".Solution_Activity_Carpet"
+            android:label="Carpet"
+            android:exported="false" />
+        <activity
+            android:name=".Solution_Activity_Furniture"
+            android:label="Furniture Fabrics"
+            android:exported="false" />
+        <activity
             android:name=".BottomSheetFragment"
             android:exported="false" />
         <activity
