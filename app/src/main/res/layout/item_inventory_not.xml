@@ -36,7 +36,7 @@
         android:gravity="center"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:text="HAVE"
+        android:text="In Stock"
         android:textColor="#FFFFFFFF"
         android:textSize="14sp" />
 </LinearLayout>
