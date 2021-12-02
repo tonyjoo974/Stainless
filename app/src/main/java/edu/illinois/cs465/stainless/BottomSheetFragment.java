@@ -1,7 +1,9 @@
 package edu.illinois.cs465.stainless;
 
 import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED;
+import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_DRAGGING;
 import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED;
+import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_SETTLING;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -104,23 +106,35 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
                 assert bottomSheet != null;
                 bottomSheet.setBackgroundResource(android.R.color.transparent);
                 behaviour = BottomSheetBehavior.from(bottomSheet);
-                behaviour.setPeekHeight(dpToPx(225));
+                behaviour.setPeekHeight(dpToPx(235));
 
                 bottomSheetCallback = new BottomSheetBehavior.BottomSheetCallback() {
                     @Override
                     public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                        Button indicator = getView().findViewById(R.id.indicator);
                         switch (newState) {
                             case STATE_COLLAPSED:
                                 ((NestedScrollView)getView().findViewById(R.id.text_root)).fullScroll(View.FOCUS_UP);
                                 ((NestedScrollView)getView().findViewById(R.id.text_root)).smoothScrollTo(0, 0);
 
                                 getView().findViewById(R.id.note).setVisibility(View.VISIBLE);
+                                break;
+                            case STATE_DRAGGING:
+                                indicator.animate().scaleX(1.5f).setDuration(25).start();
+                                break;
+
+                            case STATE_EXPANDED:
+                            case STATE_SETTLING:
+                                indicator.animate().scaleX(1).setDuration(25).start();
+                                break;
                         }
+
                     }
 
                     @Override
                     public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-                        getView().findViewById(R.id.note).setVisibility(View.INVISIBLE);
+                        getView().findViewById(R.id.note).animate().alpha(0.0f).setDuration(25).start();
+
                         if (slideOffset > 0) {
                             // resize invisible placeholder
                             LinearLayout placeholder = ((LinearLayout)getView().findViewById(R.id.placeholder));
@@ -154,21 +168,36 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
                             shape.setColor(0xffffffff);
                             shape.setCornerRadii(new float[]{newPx, newPx, newPx, newPx, 0, 0, 0, 0});
                             modal.setBackground(shape);
+
+                            // change indicator alpha
+                            Button indicator = getView().findViewById(R.id.indicator);
+                            indicator.setAlpha(slideOffset);
                         }
                     }
                 };
                 behaviour.addBottomSheetCallback(bottomSheetCallback);
 
                 if (!canPeek) {
+                    getView().findViewById(R.id.note).setVisibility(View.GONE);
                     behaviour.setState(BottomSheetBehavior.STATE_EXPANDED);
                     behaviour.setSkipCollapsed(true);
                     behaviour.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
                         // Remove animation callback after it's fully expanded
                         @Override
                         public void onStateChanged(@NonNull View bottomSheet, int newState) {
+
+                            Button indicator = getView().findViewById(R.id.indicator);
                             switch (newState) {
                                 case STATE_EXPANDED:
                                     behaviour.removeBottomSheetCallback(bottomSheetCallback);
+                                    indicator.animate().scaleX(1).setDuration(25).start();
+                                    break;
+                                case STATE_DRAGGING:
+                                    indicator.animate().scaleX(1.5f).setDuration(25).start();
+                                    break;
+                                case STATE_SETTLING:
+                                    indicator.animate().scaleX(1).setDuration(25).start();
+                                    break;
                             }
                         }
 
