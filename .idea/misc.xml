@@ -22,8 +22,9 @@
         <entry key="app/src/main/res/drawable/custom_border.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/drawable/gradient_spinner.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/drawable/layout_bg.xml" value="0.17708333333333334" />
+        <entry key="app/src/main/res/drawable/remainder_bg.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/activity_recyclerview.xml" value="0.13134057971014493" />
+        <entry key="app/src/main/res/layout/activity_recyclerview.xml" value="0.4909297052154195" />
         <entry key="app/src/main/res/layout/activity_solution.xml" value="0.17358676344022514" />
         <entry key="app/src/main/res/layout/activity_solution_carpet.xml" value="0.1609375" />
         <entry key="app/src/main/res/layout/activity_solution_furniture.xml" value="0.1609375" />
@@ -39,6 +40,7 @@
         <entry key="app/src/main/res/layout/item_inventory.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_inventory_not.xml" value="0.13134057971014493" />
         <entry key="app/src/main/res/layout/loading_screen.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/logo_home.xml" value="0.22552083333333334" />
         <entry key="app/src/main/res/layout/material_modal.xml" value="0.13134057971014493" />
         <entry key="app/src/main/res/layout/note_screen.xml" value="0.13134057971014493" />
         <entry key="app/src/main/res/layout/recycler_view.xml" value="0.13134057971014493" />

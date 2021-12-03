@@ -14,12 +14,23 @@
         android:orientation="vertical"
         android:paddingHorizontal="20dp">
 
-        <TextView
-            android:textSize="12sp"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/swipe_remainder">
-        </TextView>
+            android:layout_gravity="center"
+            android:background="@drawable/remainder_bg"
+            android:gravity="left"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/swipe_remainder"
+                android:textSize="15sp" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
