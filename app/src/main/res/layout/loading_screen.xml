@@ -7,29 +7,11 @@
     android:layout_height="match_parent">
 
 
-    <TextView
-        android:id="@+id/textView"
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Stainless"
-        android:textColor="@color/black"
-        android:textSize="75sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="For a life without stains"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.104"
-        tools:layout_editor_absoluteX="0dp"/>
+        android:layout_height="match_parent"
+        android:src="@drawable/loading_screen"
+        android:scaleType="centerCrop"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
