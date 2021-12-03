@@ -54,14 +54,5 @@ public class FavoritesFragment extends Fragment {
         this.contentSpace.addView(this.recyclerViewObj);
         return view;
     }
-//
-    public void onRestart() {
 
-        if(this.contentSpace != null) {
-            return;
-        }
-//        this.contentSpace.removeAllViews();
-
-//        this.contentSpace.addView(this.recyclerViewObj);
-    }
 }

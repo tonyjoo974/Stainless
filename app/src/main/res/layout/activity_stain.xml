@@ -10,45 +10,53 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="127dp"
-        android:layout_marginTop="50dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/stainThumbnail"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:background="#2d2d2d"
-            android:gravity="center"
+            android:layout_gravity="center"
             android:scaleType="fitCenter" />
-
-        <TextView
-            android:id="@+id/txtName"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="15dp"
-            android:text="StainName"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal">
 
-        <ToggleButton
-            android:id="@+id/myToggleButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="30dp"
-            android:textOff=""
-            android:textOn="" />
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="StainName"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <ToggleButton
+                android:id="@+id/myToggleButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textOff=""
+                android:textOn="" />
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="365dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -57,9 +65,10 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:padding="30dp"
             android:text="Washable Fabric"
+            android:textSize="20sp"
             android:onClick="washable_fabric_sol" ></Button>
 
         <Button
@@ -67,9 +76,10 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:padding="30dp"
             android:text="Carpet"
+            android:textSize="20sp"
             android:onClick="carpet_sol" ></Button>
 
         <Button
@@ -77,9 +87,10 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:padding="30dp"
             android:text="Furniture Fabric"
+            android:textSize="20sp"
             android:onClick="furniture_sol" ></Button>
 
     </LinearLayout>

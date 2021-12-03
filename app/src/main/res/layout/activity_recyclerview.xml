@@ -3,57 +3,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-    <TextView
-        android:textSize="12sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/swipe_remainder">
-    </TextView>
+    <include layout="@layout/logo_home"
+        android:id="@+id/logo_layout"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
-        <com.google.android.material.button.MaterialButtonToggleGroup
-            android:id="@+id/inventoryToggleButtonGroup"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp">
+
+        <TextView
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/swipe_remainder">
+        </TextView>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:selectionRequired="true"
-            app:singleSelection="true"
-            app:checkedButton="@id/btnHave">
-            <Button
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:id="@+id/btnHave"
-                android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/inventoryToggleButtonGroup"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="In Stock" />
+                app:selectionRequired="true"
+                app:singleSelection="true"
+                app:checkedButton="@id/btnHave">
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/btnHave"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="In Stock" />
 
-            <Button
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:id="@+id/btnNotHave"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Out Of Stock" />
-        </com.google.android.material.button.MaterialButtonToggleGroup>
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/btnNotHave"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Out Of Stock" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
 
+        </LinearLayout>
+
+        <edu.illinois.cs465.stainless.SlideRecyclerView
+            android:id="@+id/recycler_view_list1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <edu.illinois.cs465.stainless.SlideRecyclerView
+            android:id="@+id/recycler_view_list2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
-
-
-    <edu.illinois.cs465.stainless.SlideRecyclerView
-        android:id="@+id/recycler_view_list1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <edu.illinois.cs465.stainless.SlideRecyclerView
-        android:id="@+id/recycler_view_list2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </LinearLayout>
