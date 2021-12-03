@@ -31,14 +31,13 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:src="@drawable/logo"
-                android:scaleType="fitStart"
                 />
 
             <ImageView
                 android:id="@+id/login_button"
-                android:layout_width="24dp"
+                android:layout_width="30dp"
                 android:layout_height="40dp"
-                android:layout_gravity="right"
+                android:layout_marginTop="7dp"
                 android:layout_marginLeft="130dp"
                 android:layout_weight="1"
                 android:clickable="true"
