@@ -22,7 +22,7 @@
                 android:orientation="horizontal"
                 android:text="Note"
                 android:textSize="35sp"
-                android:textColor="@color/purple_500"
+                android:textColor="@color/colorPrimary"
                 android:gravity="center" />
 
         </LinearLayout>
