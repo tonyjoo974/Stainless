@@ -80,6 +80,14 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
         materialName.setText(myString);
         materialThumbnail.setImageResource(thumbnail);
         buttonText.setText(stockStatus);
+        if (!stockStatus.isEmpty()){
+            if (stockStatus == "In Stock") {
+                buttonText.setBackgroundColor(Color.parseColor("#7686F0"));
+            } else {
+                buttonText.setBackgroundColor(Color.parseColor("#F9CEDF"));
+                buttonText.setTextColor(Color.RED);
+            }
+        }
 
         Button exitButton = (Button) view.findViewById(R.id.exitModalButton);
         exitButton.setOnClickListener(new View.OnClickListener() {
