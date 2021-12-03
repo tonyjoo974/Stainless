@@ -3,6 +3,7 @@ package edu.illinois.cs465.stainless;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -57,10 +58,34 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
     }
     public void onResume() {
 
-        super.onResume();
-        if(curr == null)
+        if(curr == null) {
+            super.onResume();
             return;
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, curr).commitNow();
+
+        }
+        final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.detach(curr);
+        ft.attach(curr);
+        ft.commit();
+
+        super.onResume();
 
     }
+    @Override
+    public void onBackPressed()
+    {
+        // code here to show dialog
+        if(curr == null) {
+            super.onBackPressed();  // optional depending on your needs
+            return;
+
+        }
+        final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.detach(curr);
+        ft.attach(curr);
+        ft.commit();
+        super.onBackPressed();  // optional depending on your needs
+
+    }
+
 }
