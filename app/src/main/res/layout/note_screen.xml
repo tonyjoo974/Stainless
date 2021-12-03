@@ -32,7 +32,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="left"
-            android:layout_marginTop="50dp">
+            android:padding="5dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/layout_bg">
 
             <ImageView
                 android:id="@+id/clock"
@@ -48,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Treat stains as soon as possible. The older the stain, the more difficult it will be to remove."
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:layout_marginRight="20dp"/>
 
         </LinearLayout>
@@ -57,7 +59,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:padding="5dp"
             android:gravity="left"
+            android:background="@drawable/layout_bg"
             android:layout_marginTop="50dp">
 
             <ImageView
@@ -74,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="All removable methods should be applied prior to laundering washable garments."
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:layout_marginRight="20dp"/>
 
         </LinearLayout>
@@ -86,7 +90,7 @@
             android:textSize="20sp"
             android:orientation="horizontal"
             android:layout_gravity="center"
-            android:layout_marginTop="70dp"/>
+            android:layout_marginTop="160dp"/>
 
 
     </LinearLayout>
