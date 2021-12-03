@@ -39,6 +39,7 @@ public class LoadingScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.loading_screen);
 
         ConstraintLayout screenLayout = findViewById(R.id.screenLayout);

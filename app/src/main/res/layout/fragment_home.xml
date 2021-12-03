@@ -20,19 +20,19 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:orientation="horizontal"
             android:paddingHorizontal="20dp"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:layout_weight="0">
 
-            <TextView
-                android:id="@+id/logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Stainless Logo"
-                android:textStyle="italic|bold"
-                android:textColor="@color/purple_500"
-                android:textSize="26sp" />
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:src="@drawable/logo"
+                android:scaleType="fitStart"
+                />
 
             <ImageView
                 android:id="@+id/login_button"
@@ -43,13 +43,12 @@
                 android:layout_weight="1"
                 android:clickable="true"
                 android:scaleType="fitEnd"
-                android:src="@drawable/question_mark" />
+                android:src="@drawable/question_icon" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:paddingHorizontal="20dp"
             android:layout_weight="0">
