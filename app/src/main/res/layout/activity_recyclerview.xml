@@ -3,67 +3,75 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <include layout="@layout/logo_home"
+        android:id="@+id/logo_layout"/>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/remainder_bg"
-        android:gravity="left"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:text="@string/swipe_remainder"
-            android:textSize="15sp" />
-    </LinearLayout>
+            android:background="@drawable/remainder_bg"
+            android:gravity="left"
+            android:orientation="horizontal"
+            android:padding="10dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
-        <com.google.android.material.button.MaterialButtonToggleGroup
-            android:id="@+id/inventoryToggleButtonGroup"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/swipe_remainder"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:selectionRequired="true"
-            app:singleSelection="true"
-            app:checkedButton="@id/btnHave">
-            <Button
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:id="@+id/btnHave"
-                android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/inventoryToggleButtonGroup"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="In Stock" />
+                app:selectionRequired="true"
+                app:singleSelection="true"
+                app:checkedButton="@id/btnHave">
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/btnHave"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="In Stock" />
 
-            <Button
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:id="@+id/btnNotHave"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Out Of Stock" />
-        </com.google.android.material.button.MaterialButtonToggleGroup>
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/btnNotHave"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Out Of Stock" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
 
+        </LinearLayout>
+
+        <edu.illinois.cs465.stainless.SlideRecyclerView
+            android:id="@+id/recycler_view_list1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <edu.illinois.cs465.stainless.SlideRecyclerView
+            android:id="@+id/recycler_view_list2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
-
-
-    <edu.illinois.cs465.stainless.SlideRecyclerView
-        android:id="@+id/recycler_view_list1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <edu.illinois.cs465.stainless.SlideRecyclerView
-        android:id="@+id/recycler_view_list2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </LinearLayout>
