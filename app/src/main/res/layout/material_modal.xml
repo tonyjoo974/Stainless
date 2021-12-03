@@ -79,15 +79,16 @@
                         android:gravity="center"
                         android:text="Rubbing Alcohol"
 
-                        android:textColor="@color/purple_500" />
+                        android:textColor="@color/black" />
 
                     <Button
                         android:id="@+id/stockButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:backgroundTint="@color/purple_500"
+                        android:backgroundTint="#7686F0"
                         android:gravity="center"
                         android:text="IN STOCK"
+                        android:textAlignment="center"
                         android:textColor="@color/white" />
 
                     <!-- add onClick to change the button-->
